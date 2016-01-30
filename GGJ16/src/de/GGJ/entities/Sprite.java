@@ -1,11 +1,22 @@
 package de.GGJ.entities;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Vector2f;
 
 public class Sprite extends Entity {
-
-	Image currentImage;
-	Image[][] images; //0=Down, 1=Left, 2=Right, 3=Up 
+	/**
+	 * Movement direction and speed
+	 */
+	private Vector2f dir;
+	/**
+	 * Currently rendered image
+	 */
+	private Image currentImage;
+	/**
+	 * SpriteSheet cut into pieces and saved in this array.
+	 */
+	private Image[][] images; //0=Down, 1=Left, 2=Right, 3=Up 
 	
 	@Override
 	public Image getImage() {
@@ -20,4 +31,16 @@ public class Sprite extends Entity {
 		currentImage = images[0][0];
 	}
 	
+	public void setDirection(Vector2f dir) {
+		this.dir = dir;
+	}
+	
+	public Vector2f getDirection() {
+		return dir;
+	}
+	
+	@Override
+	public void update(GameContainer container, int delta) {
+		super.update(container, delta);
+	}
 }

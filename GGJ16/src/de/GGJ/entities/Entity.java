@@ -26,5 +26,5 @@ public abstract class Entity {
 		this.scale = scale;
 	}
 	
-	public void update(GameContainer container, int ms) {}
+	public void update(GameContainer container, int delta) {}
 }
