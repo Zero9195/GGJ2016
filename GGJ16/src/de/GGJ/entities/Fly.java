@@ -6,7 +6,7 @@ import org.newdawn.slick.geom.Vector2f;
 
 public class Fly extends Opponent {
 	
-	private static final float scale = 0.08f;
+	private static final float scale = 1.0f;
 	
 	public Fly (Vector2f pos) throws SlickException {
         super(10, pos, 50);

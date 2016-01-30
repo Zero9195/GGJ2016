@@ -32,13 +32,13 @@ public class MonkProtector extends BasicGame {
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		
 		monk.getImage().draw(monk.getPosition().x, monk.getPosition().y, monk.getScale());
-        novice.getImage().draw(novice.getPosition().x, novice.getPosition().y, novice.getScale());
 		
 		for (Opponent op : opponents) {
 			op.getImage().draw(op.getPosition().x, op.getPosition().y, op.getScale());
-		}
-		
-		arg1.setBackground(Color.white);
+		}		
+
+		novice.getImage().draw(novice.getPosition().x, novice.getPosition().y, novice.getScale());
+		arg1.setBackground(Color.red);
 	}
 
 	

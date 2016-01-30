@@ -18,13 +18,13 @@ import de.GGJ.collisionDetection.Direction;
  * @author Marw
  */
 public class Novice extends Sprite{
-    protected static final float scale = 0.3f;
+    protected static final float scale = 1.0f;
     protected int strength;
 
 	public Novice(Vector2f pos) throws SlickException {
 		super(pos, 100);
         strength = 100;
-        setSheet(new Image("resources/monk.jpeg"), 1, 1);
+        setSheet(new Image("resources/monky.png"), 1, 1);
 	}
 
     public Novice(float xPos, float yPos) throws SlickException {

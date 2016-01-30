@@ -6,14 +6,14 @@ import org.newdawn.slick.geom.Vector2f;
 
 public class Monk extends Entity {
 	
-	private static final float scale = 0.4f;
+	private static final float scale = 1.0f;
 
 	private int lifePoints;
 	private Image visual = null;
 	
 	public Monk(float height, float width) throws SlickException {
 		this.lifePoints = 100;
-		visual = new Image("resources/monk.jpeg");
+		visual = new Image("resources/monky.png");
 		float xPos = width / 2 - this.visual.getWidth() / 2 * scale;
 		float yPos = height / 2 - this.visual.getHeight() / 2 * scale;
 		this.setPosition(new Vector2f(xPos, yPos));

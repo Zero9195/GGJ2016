@@ -6,11 +6,11 @@ import org.newdawn.slick.geom.Vector2f;
 
 public class Spider extends Opponent {
 	
-	protected static final float scale = 0.3f;
+	protected static final float scale = 1.0f;
 
 	public Spider(Vector2f pos) throws SlickException {
 		super(15, pos, 30);
-		setSheet(new Image("resources/spider.jpeg"), 1, 1);
+		setSheet(new Image("resources/spider.png"), 1, 1);
 	}
 	
 	public float getScale() {
