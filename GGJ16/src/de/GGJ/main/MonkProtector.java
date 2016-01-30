@@ -8,8 +8,10 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 
 import de.GGJ.entities.*;
+
 
 public class MonkProtector extends BasicGame {
 	
@@ -24,13 +26,10 @@ public class MonkProtector extends BasicGame {
 	@Override
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		
-		float yPos = arg0.getHeight() / 2 - monk.getImage().getHeight() / 2 * Monk.scale;
-		float xPos = (arg0.getWidth() / 2) - monk.getImage().getWidth() / 2 * Monk.scale;
-		
-		monk.getImage().draw(xPos, yPos, Monk.scale);
+		monk.getImage().draw(monk.getPosition().x, monk.getPosition().y, monk.getScale());
 		
 		for (Opponent op : opponents) {
-			op.getImage().draw(100, 240, op.getScale());
+			op.getImage().draw(op.getPosition().x, op.getPosition().y, op.getScale());
 		}
 		
 		arg1.setBackground(Color.white);
@@ -39,13 +38,15 @@ public class MonkProtector extends BasicGame {
 	
 	@Override
 	public void init(GameContainer arg0) throws SlickException {
-		monk = new Monk();
-		opponents = new ArrayList<Opponent>();
-//		Opponent fly = new Fly();
-//		Opponent spider = new Spider();
 		
-//		opponents.add(fly);
-//		opponents.add(spider);
+		monk = new Monk(arg0.getHeight(), arg0.getWidth());
+		opponents = new ArrayList<Opponent>();
+		
+		Opponent fly = new Fly(new Vector2f(90, 150));
+		Opponent spider = new Spider(new Vector2f(260, 40));
+		
+		opponents.add(fly);
+		opponents.add(spider);
 		
 	}
 
