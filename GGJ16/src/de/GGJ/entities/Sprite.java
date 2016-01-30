@@ -1,5 +1,6 @@
 package de.GGJ.entities;
 
+import de.GGJ.collisionDetection.Direction;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
@@ -32,6 +33,7 @@ public class Sprite extends Entity {
     public Sprite(Vector2f pos, float speed) {
         this.speed = speed;
         setPosition(pos);
+        dir = Direction.STOP;
     }
     
 	@Override
