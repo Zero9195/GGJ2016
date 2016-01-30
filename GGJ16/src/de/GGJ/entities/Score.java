@@ -15,7 +15,7 @@ public class Score extends Entity {
 		this.score = 0;
 		this.size = 32;
 		this.font = new Font("Verdana", Font.BOLD, this.size);
-		Vector2f pos = new Vector2f(700, 20);
+		Vector2f pos = new Vector2f(750, 20);
 		this.setPosition(pos);
 	}
 

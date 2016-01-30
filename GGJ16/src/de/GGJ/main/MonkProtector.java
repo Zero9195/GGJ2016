@@ -44,12 +44,12 @@ public class MonkProtector extends BasicGame {
 		
 		//Version 1:
 		//nicer but drops framerate significantly
-		TrueTypeFont ttf = new TrueTypeFont(score.getFormattedFont(), true);
-		ttf.drawString(score.getPosition().x, score.getPosition().y, score.getRepresentableString(), Color.white);
+		//TrueTypeFont ttf = new TrueTypeFont(score.getFormattedFont(), true);
+		//ttf.drawString(score.getPosition().x, score.getPosition().y, score.getRepresentableString(), Color.white);
 		
 		//Version 2:
 		//standard version, but at higher framerate
-		//arg1.drawString(score.getRepresentableString(), score.getPosition().x, score.getPosition().y);
+		arg1.drawString(score.getRepresentableString(), score.getPosition().x, score.getPosition().y);
 		
 		arg1.setBackground(Color.red);
 	}
@@ -81,9 +81,12 @@ public class MonkProtector extends BasicGame {
         
         novice.update(container, delta);
         
+        for (Opponent op : opponents) {
+			op.update(container, delta);
+		}
+        
         //attack
         if (input.isKeyPressed(Input.KEY_SPACE)) {
-            this.score.winPoints(100);
         }
         //close game
         if (input.isKeyPressed(Input.KEY_ESCAPE) || input.isKeyPressed(Input.KEY_E) || input.isKeyPressed(Input.KEY_Q)) {
