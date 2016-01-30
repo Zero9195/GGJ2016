@@ -15,5 +15,4 @@ public abstract class Entity {
 		return pos;
 	}
 	
-	public 
 }
