@@ -38,7 +38,7 @@ public class Sprite extends Entity {
     
 	@Override
 	public void update(GameContainer container, int delta) {
-		move();
+		move(delta);
 	}
 	
 	@Override
@@ -77,8 +77,8 @@ public class Sprite extends Entity {
 		boundingBox.setLocation(pos);
 	}
 	
-	public void move() {
-		setPosition(getPosition().add(dir.copy().scale(speed)));
+	public void move(int delta) {
+		setPosition(getPosition().add(dir.copy().scale(speed*delta/1000)));
 	}
 	
 	

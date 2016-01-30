@@ -22,7 +22,7 @@ public class Novice extends Sprite{
     protected int strength;
 
 	public Novice(Vector2f pos) throws SlickException {
-		super(pos, 10);
+		super(pos, 100);
         strength = 100;
         setSheet(new Image("resources/monk.jpeg"), 1, 1);
 	}
@@ -65,6 +65,6 @@ public class Novice extends Sprite{
             setDirection(Direction.STOP);
         }
         
-        move();
+        move(delta);
     }
 }
