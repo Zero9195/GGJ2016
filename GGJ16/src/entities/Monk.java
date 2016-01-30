@@ -1,17 +1,19 @@
 package entities;
 
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tests.xml.Entity;
 
 public class Monk extends Entity {
+	
+	public static final float scale = 0.4f;
 
 	private int lifePoints;
 	private Image visual = null;
 	
-	Monk() {
+	public Monk() throws SlickException {
 		this.lifePoints = 100;
-		//TODO insert real image path
-		//visual = Image("path/to/image");
+		visual = new Image("resources/monk.jpeg");
 	}
 	
 	public boolean isAlive() {
