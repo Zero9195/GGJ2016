@@ -8,7 +8,7 @@ public class Opponent extends Entity {
 	
 	Opponent(int strength, Vector2f pos) {
 		this.strength = strength;
-		this.pos = pos;
+		this.setPosition(pos);
 	}
 	
 	public void debugInformation() {

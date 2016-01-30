@@ -5,7 +5,7 @@ import org.newdawn.slick.geom.Vector2f;
 
 public abstract class Entity {
 	private Image image;
-	protected Vector2f pos;
+	private Vector2f pos;
 	private float scale;
 	
 	public Image getImage() {

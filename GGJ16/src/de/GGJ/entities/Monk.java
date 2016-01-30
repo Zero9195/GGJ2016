@@ -16,7 +16,7 @@ public class Monk extends Entity {
 		visual = new Image("resources/monk.jpeg");
 		float xPos = width / 2 - this.visual.getWidth() / 2 * scale;
 		float yPos = height / 2 - this.visual.getHeight() / 2 * scale;
-		this.pos = new Vector2f(xPos, yPos);
+		this.setPosition(new Vector2f(xPos, yPos));
 	}
 	
 	public boolean isAlive() {
