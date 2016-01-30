@@ -31,6 +31,7 @@ public class MonkProtector extends BasicGame {
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		
 		monk.getImage().draw(monk.getPosition().x, monk.getPosition().y, monk.getScale());
+        novice.getImage().draw(novice.getPosition().x, novice.getPosition().y, novice.getScale());
 		
 		for (Opponent op : opponents) {
 			op.getImage().draw(op.getPosition().x, op.getPosition().y, op.getScale());
@@ -44,7 +45,7 @@ public class MonkProtector extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 		
 		monk = new Monk(container.getHeight(), container.getWidth());
-        novice = new Novice(container.getWidth() / 4, container.getHeight() / 2);
+        novice = new Novice(container.getWidth() / 2, container.getHeight() / 4);
 		opponents = new ArrayList<>();
 		
 		RandomPositionGenerator rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
@@ -65,13 +66,13 @@ public class MonkProtector extends BasicGame {
         
         //move player
         if (input.isKeyPressed(Input.KEY_W)) {
-            
+            novice.update(0, -1); //move upwards
         }else if(input.isKeyPressed(Input.KEY_A)) {
-            
+            novice.update(-1, 0); //move left
         }else if(input.isKeyPressed(Input.KEY_S)) {
-            
+            novice.update(0, 1); // move downwards
         }else if(input.isKeyPressed(Input.KEY_D)) {
-            
+            novice.update(1, 0); // move right
         }
         
         //hit
