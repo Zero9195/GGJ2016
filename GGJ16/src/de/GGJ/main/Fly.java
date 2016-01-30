@@ -6,4 +6,7 @@ public class Fly extends Opponent {
 		super(strength);
 	}
 
+	public void debugInformation() {
+		System.out.println("[strength] = " + this.strength);
+	}
 }

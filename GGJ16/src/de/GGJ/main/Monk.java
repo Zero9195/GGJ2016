@@ -18,4 +18,8 @@ public class Monk extends Entity {
 		lifePoints -= strength;
 	}
 	
+	public void debugInformation() {
+		System.out.println("[lifepoints] = " + this.lifePoints);
+	}
+	
 }
