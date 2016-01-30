@@ -14,8 +14,8 @@ public class Monk extends Entity {
 	public Monk(float height, float width) throws SlickException {
 		this.lifePoints = 100;
 		visual = new Image("resources/monk.jpeg");
-		float xPos = height / 2 - this.visual.getHeight() / 2 * scale;
-		float yPos = width / 2 - this.visual.getWidth() / 2 * scale;
+		float xPos = width / 2 - this.visual.getWidth() / 2 * scale;
+		float yPos = height / 2 - this.visual.getHeight() / 2 * scale;
 		this.pos = new Vector2f(xPos, yPos);
 	}
 	
