@@ -22,13 +22,14 @@ public class Novice extends Sprite{
 		this.setPosition(pos);
         strength = 100;
 		speed = 5;
-        setSheet(new Image("resources/spider.jpeg"), 1, 1);
+        setSheet(new Image("resources/monk.jpeg"), 1, 1);
 	}
 
-    public Novice(float xPos, float yPos) {
-        this.setPosition(new Vector2f(xPos, yPos));
+    public Novice(float xPos, float yPos) throws SlickException {
+        this(new Vector2f(xPos, yPos));
     }
 	
+    @Override
 	public float getScale() {
 		return scale;
 	}
