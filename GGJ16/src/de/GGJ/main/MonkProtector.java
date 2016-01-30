@@ -1,48 +1,84 @@
 package de.GGJ.main;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.geom.Vector2f;
 
 import de.GGJ.entities.*;
 
-public class MonkProtector extends BasicGame {
 
+public class MonkProtector extends BasicGame {
+	
 	private Monk monk = null;
-	private Fly fly = null;
-	private Spider spider = null;
+	private ArrayList<Opponent> opponents;
 	
 	MonkProtector(String title) {
 		super(title);
 	}
 
+	
 	@Override
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		
-		float yPos = arg0.getHeight() / 2 - monk.getImage().getHeight() / 2 * Monk.scale;
-		float xPos = (arg0.getWidth() / 2) - monk.getImage().getWidth() / 2 * Monk.scale;
+		monk.getImage().draw(monk.getPosition().x, monk.getPosition().y, monk.getScale());
 		
-		monk.getImage().draw(xPos, yPos, Monk.scale);
-		fly.getImage().draw(10, 10, Fly.scale);
-		spider.getImage().draw(270, 320, Spider.scale);
+		for (Opponent op : opponents) {
+			op.getImage().draw(op.getPosition().x, op.getPosition().y, op.getScale());
+		}
 		
 		arg1.setBackground(Color.white);
 	}
 
+	
 	@Override
 	public void init(GameContainer arg0) throws SlickException {
-		monk = new Monk();
-		fly = new Fly(10);
-		spider = new Spider(15);
-	}
-
-	@Override
-	public void update(GameContainer arg0, int arg1) throws SlickException {
+		
+		monk = new Monk(arg0.getHeight(), arg0.getWidth());
+		opponents = new ArrayList<Opponent>();
+		
+		Opponent fly = new Fly(new Vector2f(90, 150));
+		Opponent spider = new Spider(new Vector2f(260, 40));
+		
+		opponents.add(fly);
+		opponents.add(spider);
 		
 	}
+
+	
+	@Override
+	public void update(GameContainer container, int delta) throws SlickException {
+		Input input = container.getInput();
+        
+        //move player
+        if (input.isKeyPressed(Input.KEY_W)) {
+            
+        }else if(input.isKeyPressed(Input.KEY_A)) {
+            
+        }else if(input.isKeyPressed(Input.KEY_S)) {
+            
+        }else if(input.isKeyPressed(Input.KEY_D)) {
+            
+        }
+        
+        //hit
+        if (input.isKeyPressed(Input.KEY_SPACE)) {
+            
+        }
+        
+        //close game
+        if (input.isKeyPressed(Input.KEY_ESCAPE) || input.isKeyPressed(Input.KEY_E) || input.isKeyPressed(Input.KEY_Q)) {
+            container.exit();
+        }
+        
+	}
+	
 	
 	public static void main(String args[]) throws SlickException {
 		

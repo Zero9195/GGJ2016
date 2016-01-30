@@ -2,14 +2,19 @@ package de.GGJ.entities;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 
 public class Fly extends Opponent {
 	
-	public static final float scale = 0.08f;
+	private static final float scale = 0.08f;
 	
-	public Fly (int strength) throws SlickException {
-		super(strength);
+	public Fly (Vector2f pos) throws SlickException {
+		super(10, pos);
 		setSheet(new Image("resources/fly.png"), 1, 1);
+	}
+	
+	public float getScale() {
+		return scale;
 	}
 
 }
