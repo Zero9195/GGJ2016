@@ -13,7 +13,7 @@ import org.newdawn.slick.Input;
 
 import de.GGJ.collisionDetection.Direction;
 import de.GGJ.entities.*;
-import de.GGJ16.util.RandomPositionGenerator;
+import de.GGJ.util.RandomPositionGenerator;
 
 
 public class MonkProtector extends BasicGame {

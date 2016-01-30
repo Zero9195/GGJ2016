@@ -1,3 +1,4 @@
+
 package de.GGJ.entities;
 
 import de.GGJ.collisionDetection.Direction;
@@ -81,10 +82,6 @@ public class Sprite extends Entity {
 		setPosition(getPosition().add(dir.copy().scale(speed*delta/1000)));
 	}
 	
-	
-	
-	
-	//experimetnal functions to get and set central position
 	public Vector2f getCentralPoint() {
 		float xPos = this.getPosition().x + this.currentImage.getWidth() / 2;
 		float yPos = this.getPosition().y + this.currentImage.getHeight() / 2;
