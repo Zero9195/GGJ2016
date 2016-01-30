@@ -11,13 +11,17 @@ public abstract class Entity {
 	public Image getImage() {
 		return image;
 	}
+
+	public void setImage(Image image){
+		this.image = image;
+	}
 	
 	public Vector2f getPosition() {
 		return pos;
 	}
 	
-	public void setImage(Image image){
-		this.image = image;
+	public void setPosition(Vector2f pos) {
+		this.pos = pos;
 	}
 	
 	public float getScale() {
