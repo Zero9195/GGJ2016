@@ -12,7 +12,7 @@ public class Direction {
 	public final static Vector2f WEST = new Vector2f(-1,0);
 	public final static Vector2f EAST = new Vector2f(1,0);
 	public final static Vector2f NORTHEAST = new Vector2f(1,-1).normalise();
-	public final static Vector2f NORTHWEST = new Vector2f(1,1).normalise();
-	public final static Vector2f SOUTHEAST = new Vector2f(-1,-1).normalise();
+	public final static Vector2f NORTHWEST = new Vector2f(-1,-1).normalise();
+	public final static Vector2f SOUTHEAST = new Vector2f(1,1).normalise();
 	public final static Vector2f SOUTHWEST = new Vector2f(-1,1).normalise();
 }
