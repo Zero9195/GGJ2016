@@ -2,7 +2,7 @@ package de.GGJ.entities;
 
 import org.newdawn.slick.geom.Vector2f;
 
-public class Opponent extends Entity {
+public class Opponent extends Sprite {
 	
 	protected int strength;
 	

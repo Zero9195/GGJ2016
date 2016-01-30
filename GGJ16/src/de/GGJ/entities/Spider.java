@@ -10,7 +10,7 @@ public class Spider extends Opponent {
 
 	public Spider(Vector2f pos) throws SlickException {
 		super(15, pos);
-		setImage(new Image("resources/spider.jpeg"));
+		setSheet(new Image("resources/spider.jpeg"), 1, 1);
 	}
 	
 	public float getScale() {

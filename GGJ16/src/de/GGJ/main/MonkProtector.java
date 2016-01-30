@@ -8,6 +8,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Vector2f;
 
 import de.GGJ.entities.*;
@@ -55,8 +56,30 @@ public class MonkProtector extends BasicGame {
 
 	
 	@Override
-	public void update(GameContainer arg0, int arg1) throws SlickException {
-		
+	public void update(GameContainer container, int delta) throws SlickException {
+		Input input = container.getInput();
+        
+        //move player
+        if (input.isKeyPressed(Input.KEY_W)) {
+            
+        }else if(input.isKeyPressed(Input.KEY_A)) {
+            
+        }else if(input.isKeyPressed(Input.KEY_S)) {
+            
+        }else if(input.isKeyPressed(Input.KEY_D)) {
+            
+        }
+        
+        //hit
+        if (input.isKeyPressed(Input.KEY_SPACE)) {
+            
+        }
+        
+        //close game
+        if (input.isKeyPressed(Input.KEY_ESCAPE) || input.isKeyPressed(Input.KEY_E) || input.isKeyPressed(Input.KEY_Q)) {
+            container.exit();
+        }
+        
 	}
 	
 	
