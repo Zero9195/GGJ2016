@@ -16,6 +16,7 @@ import org.newdawn.slick.Input;
 import de.GGJ.collisionDetection.Direction;
 import de.GGJ.entities.*;
 import de.GGJ.util.RandomPositionGenerator;
+import de.GGJ.util.Score;
 
 
 public class MonkProtector extends BasicGame {
@@ -80,8 +81,12 @@ public class MonkProtector extends BasicGame {
         
         novice.update(container, delta);
         
+        //TODO integrate framerate into losing points to decrease attacking speed
         for (Opponent op : opponents) {
 			op.update(container, delta);
+			if (op.isAttacking()) {
+				this.score.losePoints(op.getStrength());
+			}
 		}
         
         //attack

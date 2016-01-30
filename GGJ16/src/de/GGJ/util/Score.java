@@ -1,9 +1,11 @@
-package de.GGJ.entities;
+package de.GGJ.util;
 
 import java.awt.Font;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
+
+import de.GGJ.entities.Entity;
 
 public class Score extends Entity {
 	
@@ -36,6 +38,9 @@ public class Score extends Entity {
 		this.score += i;
 	}
 	
+	public void losePoints(int i) {
+		this.score -= i;
+	}
 	
 
 }

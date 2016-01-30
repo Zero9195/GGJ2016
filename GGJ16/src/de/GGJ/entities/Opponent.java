@@ -6,10 +6,13 @@ import org.newdawn.slick.geom.Vector2f;
 public class Opponent extends Sprite {
 	
 	protected int strength;
+	//variabel to determine whether points are currently lost
+	private boolean attacking;
     
 	public Opponent(int strength, Vector2f pos, float speed) {
         super(pos, speed);
         this.strength = strength;  
+        this.attacking = false;
 	}
 	
 	public void debugInformation() {
@@ -26,9 +29,22 @@ public class Opponent extends Sprite {
 		Vector2f directionToCenter = new Vector2f(xMovement, yMovement);
 		
 		this.setDirection(directionToCenter);
-		if (this.getPosition().x != centerX && this.getPosition().y != centerY) {
+		
+		//has yet to reach center
+		if (Math.abs(xMovement) > 0.1 || Math.abs(yMovement) > 0.1) {
 			super.update(container, delta);			
+		} else {
+			this.attacking = true;
 		}
+		
+	}
+	
+	public int getStrength() {
+		return this.strength;
+	}
+	
+	public boolean isAttacking() {
+		return this.attacking;
 	}
 
 }
