@@ -5,10 +5,10 @@ import org.newdawn.slick.geom.Vector2f;
 public class Opponent extends Sprite {
 	
 	protected int strength;
-	
-	Opponent(int strength, Vector2f pos) {
-		this.strength = strength;
-		this.setPosition(pos);
+    
+	public Opponent(int strength, Vector2f pos, float speed) {
+        super(pos, speed);
+        this.strength = strength;
 	}
 	
 	public void debugInformation() {

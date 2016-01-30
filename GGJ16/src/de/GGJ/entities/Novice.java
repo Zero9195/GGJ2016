@@ -22,7 +22,7 @@ public class Novice extends Sprite{
     protected int strength;
 
 	public Novice(Vector2f pos) throws SlickException {
-		this.setPosition(pos);
+		super(pos, 10);
         strength = 100;
         setSheet(new Image("resources/monk.jpeg"), 1, 1);
 	}

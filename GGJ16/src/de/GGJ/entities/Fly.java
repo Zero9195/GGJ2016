@@ -9,7 +9,7 @@ public class Fly extends Opponent {
 	private static final float scale = 0.08f;
 	
 	public Fly (Vector2f pos) throws SlickException {
-		super(10, pos);
+        super(10, pos, 5);
 		setSheet(new Image("resources/fly.png"), 1, 1);
 	}
 	

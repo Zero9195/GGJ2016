@@ -15,7 +15,7 @@ public class Sprite extends Entity {
 	/**
 	 * Movement speed.
 	 */
-	private float speed;
+	private float speed = 0;
 	/**
 	 * Currently rendered image.
 	 */
@@ -28,7 +28,12 @@ public class Sprite extends Entity {
 	 * Used for collision detection.
 	 */
 	private Shape boundingBox = new Rectangle(0, 0, 1, 1);
-	
+    
+    public Sprite(Vector2f pos, float speed) {
+        this.speed = speed;
+        setPosition(pos);
+    }
+    
 	@Override
 	public void update(GameContainer container, int delta) {
 		move();
