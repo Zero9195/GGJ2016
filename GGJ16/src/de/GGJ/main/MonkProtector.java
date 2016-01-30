@@ -9,7 +9,6 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.geom.Vector2f;
 
 import de.GGJ.entities.*;
 import de.GGJ16.util.RandomPositionGenerator;
@@ -47,14 +46,16 @@ public class MonkProtector extends BasicGame {
         novice = new Novice(container.getWidth() / 4, container.getHeight() / 2);
 		opponents = new ArrayList<>();
 		
-		RandomPositionGenerator rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight(), 20);
+		RandomPositionGenerator rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
 		
-		Opponent fly = new Fly(new Vector2f(90, 150));
-		Opponent spider = new Spider(new Vector2f(260, 40));
+		Opponent fly = new Fly(rpg.getRandomPosition());
+		Opponent spider = new Spider(rpg.getRandomPosition());
+		
+		System.out.println(fly.getPosition());
+		System.out.println(spider.getPosition());
 		
 		opponents.add(fly);
 		opponents.add(spider);
-		
 	}
 
 	
