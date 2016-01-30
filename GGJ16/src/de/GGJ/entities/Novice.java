@@ -61,6 +61,8 @@ public class Novice extends Sprite{
             setDirection(Direction.WEST);
         } else if(input.isKeyDown(Input.KEY_D)) {
             setDirection(Direction.EAST);
+        }else{
+            setDirection(Direction.STOP);
         }
         
         move();
