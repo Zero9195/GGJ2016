@@ -1,12 +1,10 @@
 package de.GGJ.main;
 
+import org.newdawn.slick.Image;
+
 public class Fly extends Opponent {
 	
-	Fly (int strength) {
-		super(strength);
-	}
-
-	public void debugInformation() {
-		System.out.println("[strength] = " + this.strength);
+	Fly (Image i, int strength) {
+		super(i, strength);
 	}
 }
