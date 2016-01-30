@@ -8,20 +8,23 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.Input;
 
 import de.GGJ.collisionDetection.Direction;
 import de.GGJ.entities.*;
+import de.GGJ16.util.RandomPositionGenerator;
 
 
 public class MonkProtector extends BasicGame {
 	
 	private Monk monk = null;
 	private ArrayList<Opponent> opponents;
+    private Novice novice;
 	
 	MonkProtector(String title) {
 		super(title);
+        this.novice = null;
 	}
 
 	
@@ -29,6 +32,7 @@ public class MonkProtector extends BasicGame {
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		
 		monk.getImage().draw(monk.getPosition().x, monk.getPosition().y, monk.getScale());
+        novice.getImage().draw(novice.getPosition().x, novice.getPosition().y, novice.getScale());
 		
 		for (Opponent op : opponents) {
 			op.getImage().draw(op.getPosition().x, op.getPosition().y, op.getScale());
@@ -39,46 +43,27 @@ public class MonkProtector extends BasicGame {
 
 	
 	@Override
-	public void init(GameContainer arg0) throws SlickException {
+	public void init(GameContainer container) throws SlickException {
 		
-		monk = new Monk(arg0.getHeight(), arg0.getWidth());
-		opponents = new ArrayList<Opponent>();
+		monk = new Monk(container.getHeight(), container.getWidth());
+        novice = new Novice(container.getWidth() / 2, container.getHeight() / 4);
+		opponents = new ArrayList<>();
 		
-		Opponent fly = new Fly(new Vector2f(90, 150));
-		Opponent spider = new Spider(new Vector2f(260, 40));
+		RandomPositionGenerator rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
+		
+		Opponent fly = new Fly(new Vector2f(0, 0));
+		Opponent spider = new Spider(new Vector2f(0, 0));
+		fly.setPositionViaCentralPoint(rpg.getRandomPosition());
+		spider.setPositionViaCentralPoint(rpg.getRandomPosition());
 		
 		opponents.add(fly);
-		opponents.add(spider);
-		
+		opponents.add(spider);	
 	}
 
 	
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
 		Input input = container.getInput();
-        
-        //move player
-        if (input.isKeyDown(Input.KEY_W)) {
-        	if(input.isKeyDown(Input.KEY_A)){
-        		setDirection(Direction.NORTHWEST);
-        	} else if(input.isKeyDown(Input.KEY_D)){
-        		setDirection(Direction.NORTHEAST);
-        	} else {
-        		setDirection(Direction.NORTH);
-        	}
-        } else if(input.isKeyDown(Input.KEY_S)) {
-        	if(input.isKeyDown(Input.KEY_A)){
-        		setDirection(Direction.SOUTHWEST);
-        	} else if(input.isKeyDown(Input.KEY_D)){
-        		setDirection(Direction.SOUTHEAST);
-        	} else {
-        		setDirection(Direction.SOUTH);
-        	}
-        } else if(input.isKeyDown(Input.KEY_A)) {
-            setDirection(Direction.WEST);
-        } else if(input.isKeyDown(Input.KEY_D)) {
-            setDirection(Direction.EAST);
-        }
         
         //attack
         if (input.isKeyPressed(Input.KEY_SPACE)) {

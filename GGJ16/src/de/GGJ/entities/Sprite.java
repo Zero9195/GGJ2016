@@ -32,6 +32,7 @@ public class Sprite extends Entity {
 	@Override
 	public void update(GameContainer container, int delta) {
 		
+		move();
 	}
 	
 	@Override
@@ -73,4 +74,24 @@ public class Sprite extends Entity {
 	public void move() {
 		setPosition(getPosition().add(dir.copy().scale(speed)));
 	}
+	
+	
+	
+	
+	//experimetnal functions to get and set central position
+	public Vector2f getCentralPoint() {
+		float xPos = this.getPosition().x + this.currentImage.getWidth() / 2;
+		float yPos = this.getPosition().y + this.currentImage.getHeight() / 2;
+		
+		return new Vector2f(xPos, yPos);
+	}
+	
+	public void setPositionViaCentralPoint(Vector2f newPos) {
+		float xPos = newPos.x - this.currentImage.getWidth() / 2 * this.getScale();
+		float yPos = newPos.y - this.currentImage.getHeight() / 2 * this.getScale();
+		
+		Vector2f pos = new Vector2f(xPos, yPos);
+		this.setPosition(pos);	
+	}
+	
 }
