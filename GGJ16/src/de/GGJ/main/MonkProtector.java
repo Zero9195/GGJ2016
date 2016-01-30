@@ -9,7 +9,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
-import entities.*;
+import de.GGJ.entities.*;
 
 public class MonkProtector extends BasicGame {
 
@@ -33,13 +33,7 @@ public class MonkProtector extends BasicGame {
 		monk.getImage().draw(xPos, yPos, Monk.scale);
 		
 		for (Opponent op : opponents) {
-			float scale = 1.0f;
-			if (op instanceof Fly) {
-				scale = scaleFly;
-			} else {
-				scale = scaleSpider;
-			}
-			op.getImage().draw(100, 240, scale);
+			op.getImage().draw(100, 240, op.getScale());
 		}
 		
 		arg1.setBackground(Color.white);
