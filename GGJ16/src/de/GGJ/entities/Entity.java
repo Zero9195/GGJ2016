@@ -1,4 +1,4 @@
-package entities;
+package de.GGJ.entities;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
@@ -15,4 +15,7 @@ public abstract class Entity {
 		return pos;
 	}
 	
+	public void setImage(Image image){
+		this.image = image;
+	}
 }

@@ -1,4 +1,4 @@
-package entities;
+package de.GGJ.entities;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
