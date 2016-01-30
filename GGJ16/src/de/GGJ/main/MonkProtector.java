@@ -12,9 +12,6 @@ import org.newdawn.slick.SlickException;
 import de.GGJ.entities.*;
 
 public class MonkProtector extends BasicGame {
-
-	private static final float scaleFly = 0.08f;
-	private static final float scaleSpider = 0.3f;
 	
 	private Monk monk = null;
 	private ArrayList<Opponent> opponents;
