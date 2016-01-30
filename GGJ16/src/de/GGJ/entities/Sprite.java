@@ -27,11 +27,10 @@ public class Sprite extends Entity {
 	/**
 	 * Used for collision detection.
 	 */
-	private Shape boundingBox;
+	private Shape boundingBox = new Rectangle(0, 0, 1, 1);
 	
 	@Override
 	public void update(GameContainer container, int delta) {
-		
 		move();
 	}
 	
