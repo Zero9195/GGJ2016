@@ -30,9 +30,8 @@ public class MonkProtector extends BasicGame {
         this.novice = null;
 	}
 
-	
 	@Override
-	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
+	public void render(GameContainer container, Graphics graphics) throws SlickException {
 		
 		monk.getImage().draw(monk.getPosition().x, monk.getPosition().y, monk.getScale());
 		
@@ -49,9 +48,9 @@ public class MonkProtector extends BasicGame {
 		
 		//Version 2:
 		//standard version, but at higher framerate
-		arg1.drawString(score.getRepresentableString(), score.getPosition().x, score.getPosition().y);
+		graphics.drawString(score.getRepresentableString(), score.getPosition().x, score.getPosition().y);
 		
-		arg1.setBackground(Color.red);
+		graphics.setBackground(Color.red);
 	}
 
 	
