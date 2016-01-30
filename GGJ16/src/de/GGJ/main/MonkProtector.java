@@ -65,6 +65,8 @@ public class MonkProtector extends BasicGame {
 	public void update(GameContainer container, int delta) throws SlickException {
 		Input input = container.getInput();
         
+        novice.update(container, delta);
+        
         //attack
         if (input.isKeyPressed(Input.KEY_SPACE)) {
             
