@@ -1,4 +1,4 @@
-package de.GGJ.main;
+package entities;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.tests.xml.Entity;
