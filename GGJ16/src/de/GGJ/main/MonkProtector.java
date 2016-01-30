@@ -19,9 +19,11 @@ public class MonkProtector extends BasicGame {
 	
 	private Monk monk = null;
 	private ArrayList<Opponent> opponents;
+    private Novice novice;
 	
 	MonkProtector(String title) {
 		super(title);
+        this.novice = null;
 	}
 
 	
@@ -39,13 +41,13 @@ public class MonkProtector extends BasicGame {
 
 	
 	@Override
-	public void init(GameContainer arg0) throws SlickException {
+	public void init(GameContainer container) throws SlickException {
 		
-		monk = new Monk(arg0.getHeight(), arg0.getWidth());
+		monk = new Monk(container.getHeight(), container.getWidth());
+        novice = new Novice(container.getWidth() / 4, container.getHeight() / 2);
+		opponents = new ArrayList<>();
 		
-		opponents = new ArrayList<Opponent>();
-		
-		RandomPositionGenerator rpg = new RandomPositionGenerator(arg0.getWidth(), arg0.getHeight());
+		RandomPositionGenerator rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
 		
 		Opponent fly = new Fly(new Vector2f(0, 0));
 		Opponent spider = new Spider(new Vector2f(0, 0));
