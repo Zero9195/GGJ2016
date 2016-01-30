@@ -8,8 +8,7 @@ public class Opponent extends Entity {
 	protected Image visual = null;
 	protected int strength;
 	
-	Opponent(Image i, int strength) {
-		this.visual = i;
+	Opponent(int strength) {
 		this.strength = strength;
 	}
 	

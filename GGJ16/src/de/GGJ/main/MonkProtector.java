@@ -2,32 +2,41 @@ package de.GGJ.main;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+
+import entities.*;
 
 public class MonkProtector extends BasicGame {
 
-	private Image monk = null;
+	private Monk monk = null;
+	private Fly fly = null;
+	private Spider spider = null;
 	
-	private static final float scaleOfMonk = 0.4f;
-	
-	
-	public MonkProtector(String title) {
+	MonkProtector(String title) {
 		super(title);
 	}
 
 	@Override
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
-		float yPos = arg0.getHeight() / 2;
-		float xPos = arg0.getWidth() / 2;
-		monk.draw(xPos, yPos, scaleOfMonk);
+		
+		float yPos = arg0.getHeight() / 2 - monk.getImage().getHeight() / 2 * Monk.scale;
+		float xPos = (arg0.getWidth() / 2) - monk.getImage().getWidth() / 2 * Monk.scale;
+		
+		monk.getImage().draw(xPos, yPos, Monk.scale);
+		fly.getImage().draw(10, 10, Fly.scale);
+		spider.getImage().draw(270, 320, Spider.scale);
+		
+		arg1.setBackground(Color.white);
 	}
 
 	@Override
 	public void init(GameContainer arg0) throws SlickException {
-		monk = new Image("data/monkey-med.jpeg");
+		monk = new Monk();
+		fly = new Fly(10);
+		spider = new Spider(15);
 	}
 
 	@Override
