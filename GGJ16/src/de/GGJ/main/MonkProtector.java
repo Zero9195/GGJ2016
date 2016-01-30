@@ -8,6 +8,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.Input;
 
 import de.GGJ.entities.*;
@@ -41,18 +42,18 @@ public class MonkProtector extends BasicGame {
 	public void init(GameContainer arg0) throws SlickException {
 		
 		monk = new Monk(arg0.getHeight(), arg0.getWidth());
+		
 		opponents = new ArrayList<Opponent>();
 		
 		RandomPositionGenerator rpg = new RandomPositionGenerator(arg0.getWidth(), arg0.getHeight());
 		
-		Opponent fly = new Fly(rpg.getRandomPosition());
-		Opponent spider = new Spider(rpg.getRandomPosition());
-		
-		System.out.println(fly.getPosition());
-		System.out.println(spider.getPosition());
+		Opponent fly = new Fly(new Vector2f(0, 0));
+		Opponent spider = new Spider(new Vector2f(0, 0));
+		fly.setPositionViaCentralPoint(rpg.getRandomPosition());
+		spider.setPositionViaCentralPoint(rpg.getRandomPosition());
 		
 		opponents.add(fly);
-		opponents.add(spider);
+		opponents.add(spider);	
 	}
 
 	
