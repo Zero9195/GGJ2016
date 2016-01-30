@@ -42,21 +42,21 @@ public class Novice extends Sprite{
     	
     	//move player
         if (input.isKeyDown(Input.KEY_W)) {
-        	if(input.isKeyDown(Input.KEY_A)){
-        		setDirection(Direction.NORTHWEST);
-        	} else if(input.isKeyDown(Input.KEY_D)){
-        		setDirection(Direction.NORTHEAST);
-        	} else {
+//        	if(input.isKeyDown(Input.KEY_A)){
+//        		setDirection(Direction.NORTHWEST);
+//        	} else if(input.isKeyDown(Input.KEY_D)){
+//        		setDirection(Direction.NORTHEAST);
+//        	} else {
         		setDirection(Direction.NORTH);
-        	}
+//        	}
         } else if(input.isKeyDown(Input.KEY_S)) {
-        	if(input.isKeyDown(Input.KEY_A)){
-        		setDirection(Direction.SOUTHWEST);
-        	} else if(input.isKeyDown(Input.KEY_D)){
-        		setDirection(Direction.SOUTHEAST);
-        	} else {
+//        	if(input.isKeyDown(Input.KEY_A)){
+//        		setDirection(Direction.SOUTHWEST);
+//        	} else if(input.isKeyDown(Input.KEY_D)){
+//        		setDirection(Direction.SOUTHEAST);
+//        	} else {
         		setDirection(Direction.SOUTH);
-        	}
+//        	}
         } else if(input.isKeyDown(Input.KEY_A)) {
             setDirection(Direction.WEST);
         } else if(input.isKeyDown(Input.KEY_D)) {
