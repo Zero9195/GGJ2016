@@ -1,5 +1,6 @@
 package de.GGJ.main;
 
+import java.awt.Font;
 import java.util.ArrayList;
 
 import org.newdawn.slick.AppGameContainer;
@@ -8,6 +9,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.Input;
 
@@ -21,6 +23,7 @@ public class MonkProtector extends BasicGame {
 	private Monk monk = null;
 	private ArrayList<Opponent> opponents;
     private Novice novice;
+    private Score score;
 	
 	MonkProtector(String title) {
 		super(title);
@@ -36,8 +39,18 @@ public class MonkProtector extends BasicGame {
 		for (Opponent op : opponents) {
 			op.getImage().draw(op.getPosition().x, op.getPosition().y, op.getScale());
 		}		
-
+		
 		novice.getImage().draw(novice.getPosition().x, novice.getPosition().y, novice.getScale());
+		
+		//Version 1:
+		//nicer but drops framerate significantly
+		TrueTypeFont ttf = new TrueTypeFont(score.getFormattedFont(), true);
+		ttf.drawString(score.getPosition().x, score.getPosition().y, score.getRepresentableString(), Color.white);
+		
+		//Version 2:
+		//standard version, but at higher framerate
+		//arg1.drawString(score.getRepresentableString(), score.getPosition().x, score.getPosition().y);
+		
 		arg1.setBackground(Color.red);
 	}
 
@@ -48,6 +61,7 @@ public class MonkProtector extends BasicGame {
 		monk = new Monk(container.getHeight(), container.getWidth());
         novice = new Novice(container.getWidth() / 2, container.getHeight() / 4);
 		opponents = new ArrayList<>();
+		score = new Score();
 		
 		RandomPositionGenerator rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
 		
@@ -69,7 +83,7 @@ public class MonkProtector extends BasicGame {
         
         //attack
         if (input.isKeyPressed(Input.KEY_SPACE)) {
-            
+            this.score.winPoints(100);
         }
         //close game
         if (input.isKeyPressed(Input.KEY_ESCAPE) || input.isKeyPressed(Input.KEY_E) || input.isKeyPressed(Input.KEY_Q)) {
