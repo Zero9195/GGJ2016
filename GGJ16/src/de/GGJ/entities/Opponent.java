@@ -2,7 +2,7 @@ package de.GGJ.entities;
 
 import org.newdawn.slick.Image;
 
-public class Opponent extends Entity {
+public class Opponent extends Sprite {
 	
 	protected int strength;
 	

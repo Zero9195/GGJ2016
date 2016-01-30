@@ -9,7 +9,7 @@ public class Spider extends Opponent {
 
 	public Spider(int strength) throws SlickException {
 		super(strength);
-		setImage(new Image("resources/spider.jpeg"));
+		setSheet(new Image("resources/spider.jpeg"), 1, 1);
 	}
 
 }

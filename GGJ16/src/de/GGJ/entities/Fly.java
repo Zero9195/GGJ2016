@@ -9,7 +9,7 @@ public class Fly extends Opponent {
 	
 	public Fly (int strength) throws SlickException {
 		super(strength);
-		setImage(new Image("resources/fly.png"));
+		setSheet(new Image("resources/fly.png"), 1, 1);
 	}
 
 }
