@@ -41,8 +41,8 @@ public class MonkProtector extends BasicGame {
 	public void init(GameContainer arg0) throws SlickException {
 		monk = new Monk();
 		opponents = new ArrayList<Opponent>();
-		Opponent fly = new Fly(10);
-		Opponent spider = new Spider(15);
+		Opponent fly = new Fly();
+		Opponent spider = new Spider();
 		
 	
 		opponents.add(fly);

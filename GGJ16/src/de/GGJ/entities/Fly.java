@@ -7,8 +7,8 @@ public class Fly extends Opponent {
 	
 	private static final float scale = 0.08f;
 	
-	public Fly (int strength) throws SlickException {
-		super(strength);
+	public Fly () throws SlickException {
+		super(10);
 		setImage(new Image("resources/fly.png"));
 	}
 	

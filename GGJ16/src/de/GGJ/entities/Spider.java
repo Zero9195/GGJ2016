@@ -7,8 +7,8 @@ public class Spider extends Opponent {
 	
 	protected static final float scale = 0.3f;
 
-	public Spider(int strength) throws SlickException {
-		super(strength);
+	public Spider() throws SlickException {
+		super(15);
 		setImage(new Image("resources/spider.jpeg"));
 	}
 	
