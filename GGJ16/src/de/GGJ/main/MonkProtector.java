@@ -11,6 +11,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Vector2f;
 
+import de.GGJ.collisionDetection.Direction;
 import de.GGJ.entities.*;
 
 
@@ -57,21 +58,32 @@ public class MonkProtector extends BasicGame {
 		Input input = container.getInput();
         
         //move player
-        if (input.isKeyPressed(Input.KEY_W)) {
-            
-        }else if(input.isKeyPressed(Input.KEY_A)) {
-            
-        }else if(input.isKeyPressed(Input.KEY_S)) {
-            
-        }else if(input.isKeyPressed(Input.KEY_D)) {
-            
+        if (input.isKeyDown(Input.KEY_W)) {
+        	if(input.isKeyDown(Input.KEY_A)){
+        		setDirection(Direction.NORTHWEST);
+        	} else if(input.isKeyDown(Input.KEY_D)){
+        		setDirection(Direction.NORTHEAST);
+        	} else {
+        		setDirection(Direction.NORTH);
+        	}
+        } else if(input.isKeyDown(Input.KEY_S)) {
+        	if(input.isKeyDown(Input.KEY_A)){
+        		setDirection(Direction.SOUTHWEST);
+        	} else if(input.isKeyDown(Input.KEY_D)){
+        		setDirection(Direction.SOUTHEAST);
+        	} else {
+        		setDirection(Direction.SOUTH);
+        	}
+        } else if(input.isKeyDown(Input.KEY_A)) {
+            setDirection(Direction.WEST);
+        } else if(input.isKeyDown(Input.KEY_D)) {
+            setDirection(Direction.EAST);
         }
         
-        //hit
+        //attack
         if (input.isKeyPressed(Input.KEY_SPACE)) {
             
         }
-        
         //close game
         if (input.isKeyPressed(Input.KEY_ESCAPE) || input.isKeyPressed(Input.KEY_E) || input.isKeyPressed(Input.KEY_Q)) {
             container.exit();
