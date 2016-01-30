@@ -22,7 +22,7 @@ public class MonkProtector extends BasicGame {
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		float yPos = arg0.getHeight() / 2;
 		float xPos = arg0.getWidth() / 2;
-		monk.draw(yPos, xPos, scaleOfMonk);
+		monk.draw(xPos, yPos, scaleOfMonk);
 	}
 
 	@Override
