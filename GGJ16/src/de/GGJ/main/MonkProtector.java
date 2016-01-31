@@ -38,6 +38,7 @@ public class MonkProtector extends BasicGame {
     private RandomPositionGenerator rpg;
     private boolean won;
     private boolean paused;
+    private boolean lost;
     private Background bg;
     private int pointsToWin;
 	
@@ -54,8 +55,8 @@ public class MonkProtector extends BasicGame {
 		opponents = new ArrayList<>();
 		score = new Score();
 		ttf = new TrueTypeFont(score.getFormattedFont(), true);
-		this.bg = new Background(new Vector2f(0, 0), 0.25f);
-		Image tmp = new Image("resources/bgaffengame.png");
+		this.bg = new Background(new Vector2f(0, 0), 1.0f);
+		Image tmp = new Image("resources/bgMonkyGame.png");
 		this.bg.setImage(tmp);
 		this.damageTimer = 0;
 		this.spawnTimer = 0;
@@ -63,6 +64,7 @@ public class MonkProtector extends BasicGame {
 		this.accelerationOfSpawning = 50;
 		this.won = false;
 		this.paused = false;
+		this.lost = false;
 		this.pointsToWin = 10;
 		
 		rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
@@ -93,7 +95,6 @@ public class MonkProtector extends BasicGame {
 
 		ttf.drawString(score.getPosition().x, score.getPosition().y, score.getRepresentableString(), Color.white);
 
-		//tell user if in pause or winnig state
 		if (this.won) {
 			int offset = ttf.getWidth("You won!") / 2;
 			ttf.drawString(container.getWidth() / 2 - offset, container.getHeight() / 3, "You won!");
@@ -102,6 +103,10 @@ public class MonkProtector extends BasicGame {
 			int offset = ttf.getWidth("Paused!") / 2;
 			ttf.drawString(container.getWidth() / 2 - offset, container.getHeight() / 3, "Paused!");
 		}
+		if (this.lost) {
+			int offset = ttf.getWidth("You lost!") / 2;
+			ttf.drawString(container.getWidth() / 2 - offset, container.getHeight() / 3, "You lost!");
+		}
 
 	}
 	
@@ -109,7 +114,7 @@ public class MonkProtector extends BasicGame {
 	public void update(GameContainer container, int delta) throws SlickException {
 		Input input = container.getInput();
         
-		if (!won && !paused) {
+		if (!won && !paused && !lost) {
 			novice.update(container, delta);
 			Weapon w = novice.getWeapon();
 			Opponent op;
@@ -143,11 +148,17 @@ public class MonkProtector extends BasicGame {
 			if (this.score.getScore() >= this.pointsToWin) {
 				this.won = true;
 			}
+			
+			if (this.score.getScore() < 0) {
+				this.lost = true;
+			}
 		}
         
 		//pause game
 		if (input.isKeyPressed(Input.KEY_P)) {
-			this.paused = !this.paused;
+			if (!this.lost && !this.won) {
+				this.paused = !this.paused;				
+			}
 		}
 		
         //attack
