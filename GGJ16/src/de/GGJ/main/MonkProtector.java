@@ -65,7 +65,7 @@ public class MonkProtector extends BasicGame {
 		this.won = false;
 		this.paused = false;
 		this.lost = false;
-		this.pointsToWin = 10;
+		this.pointsToWin = 250;
 		
 		rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
 		
