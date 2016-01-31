@@ -7,12 +7,15 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
-import org.newdawn.slick.Input;
 
-import de.GGJ.collisionDetection.Direction;
-import de.GGJ.entities.*;
+import de.GGJ.entities.Fly;
+import de.GGJ.entities.Monk;
+import de.GGJ.entities.Novice;
+import de.GGJ.entities.Opponent;
+import de.GGJ.entities.Spider;
 import de.GGJ16.util.RandomPositionGenerator;
 
 
