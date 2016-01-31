@@ -5,6 +5,8 @@
  */
 package de.GGJ.entities;
 
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
 /**
@@ -13,8 +15,9 @@ import org.newdawn.slick.geom.Vector2f;
  */
 public class FlyFlap extends Weapon{
     
-    public FlyFlap(Vector2f pos) {
-        super(pos);
+    public FlyFlap(Vector2f pos) throws SlickException {
+        super(pos, 0.7f);
+        setSheet(new Image("resources/flyFlap.png"), 1, 1);
     }
     
 }

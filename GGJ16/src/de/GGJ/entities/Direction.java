@@ -1,4 +1,4 @@
-package de.GGJ.collisionDetection;
+package de.GGJ.entities;
 
 import org.newdawn.slick.geom.Vector2f;
 

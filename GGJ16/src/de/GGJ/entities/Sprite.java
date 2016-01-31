@@ -1,7 +1,6 @@
 
 package de.GGJ.entities;
 
-import de.GGJ.collisionDetection.Direction;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
@@ -31,9 +30,15 @@ public class Sprite extends Entity {
 	 */
 	private Shape boundingBox = new Rectangle(0, 0, 1, 1);
     
-    public Sprite(Vector2f pos, float speed) {
+    /**
+     *
+     * @param pos
+     * @param speed
+     * @param scale
+     */
+    public Sprite(Vector2f pos, float speed, float scale) {
+        super(pos, scale);
         this.speed = speed;
-        setPosition(pos);
         dir = Direction.STOP;
     }
     
@@ -80,6 +85,10 @@ public class Sprite extends Entity {
 	
 	public void move(int delta) {
 		setPosition(getPosition().add(dir.copy().scale(speed*delta/1000)));
+	}
+	
+	public Shape getBounding(){
+		return boundingBox;
 	}
 	
 	public Vector2f getCentralPoint() {

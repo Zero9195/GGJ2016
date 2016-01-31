@@ -3,14 +3,14 @@ package de.GGJ.entities;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.geom.Vector2f;
 
-public class Opponent extends Sprite {
+public abstract class Opponent extends Sprite {
 	
 	protected int strength;
 	//variable to determine whether points are currently lost
 	private boolean attacking;
     
-	public Opponent(int strength, Vector2f pos, float speed) {
-        super(pos, speed);
+	public Opponent(int strength, Vector2f pos, float speed, float scale) {
+        super(pos, speed, scale);
         this.strength = strength;  
         this.attacking = false;
 	}
@@ -19,6 +19,7 @@ public class Opponent extends Sprite {
 		System.out.println("[strength] = " + this.strength);
 	}
 	
+    @Override
 	public void update(GameContainer container, int delta) {
 		
 		float centerX = container.getWidth() / 2;
