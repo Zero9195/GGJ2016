@@ -31,9 +31,15 @@ public class Sprite extends Entity {
 	 */
 	private Shape boundingBox = new Rectangle(0, 0, 1, 1);
     
-    public Sprite(Vector2f pos, float speed) {
+    /**
+     *
+     * @param pos
+     * @param speed
+     * @param scale
+     */
+    public Sprite(Vector2f pos, float speed, float scale) {
+        super(pos, scale);
         this.speed = speed;
-        setPosition(pos);
         dir = Direction.STOP;
     }
     

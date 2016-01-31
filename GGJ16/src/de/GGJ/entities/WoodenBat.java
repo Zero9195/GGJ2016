@@ -14,7 +14,7 @@ import org.newdawn.slick.geom.Vector2f;
 public class WoodenBat extends Weapon {
     
     public WoodenBat(Vector2f pos) {
-        super(pos);
+        super(pos, 1.0f);
     }
     
 }

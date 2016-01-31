@@ -13,8 +13,8 @@ import org.newdawn.slick.geom.Vector2f;
  */
 public abstract class Weapon extends Sprite{
     
-    public Weapon(Vector2f pos) {
-        super(pos, 0); // a weapon has no speed
+    public Weapon(Vector2f pos, float scale) {
+        super(pos, 0, scale); // a weapon has no speed
     }
     
     

@@ -14,11 +14,10 @@ public class Score extends Entity {
 	private int size;
 	
 	public Score() {
+        super(new Vector2f(745,20), 1.0f);
 		this.score = 0;
 		this.size = 32;
 		this.font = new Font("Verdana", Font.BOLD, this.size);
-		Vector2f pos = new Vector2f(750, 20);
-		this.setPosition(pos);
 	}
 
 	@Override

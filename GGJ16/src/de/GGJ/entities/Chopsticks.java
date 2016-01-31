@@ -14,7 +14,7 @@ import org.newdawn.slick.geom.Vector2f;
 public class Chopsticks extends Weapon{
     
     public Chopsticks(Vector2f pos) {
-        super(pos);
+        super(pos, 1.0f);
     }
     
 }
