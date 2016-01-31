@@ -28,6 +28,7 @@ public class MonkProtector extends BasicGame {
 	private ArrayList<Opponent> opponents;
     private Novice novice;
     private Score score;
+    private TrueTypeFont ttf;
 	
 	MonkProtector(String title) {
 		super(title);
@@ -55,7 +56,6 @@ public class MonkProtector extends BasicGame {
 	}
 
 	
-	TrueTypeFont ttf;
 	@Override
 	public void render(GameContainer container, Graphics graphics) throws SlickException {
 		
@@ -67,17 +67,9 @@ public class MonkProtector extends BasicGame {
 		
 		novice.getImage().draw(novice.getPosition().x, novice.getPosition().y, novice.getScale());
 		novice.renderWeapon();
-		//Version 1:
-		//nicer but drops framerate significantly
-		if(ttf == null){
-			ttf = new TrueTypeFont(score.getFormattedFont(), true);
-		}
+
 		ttf.drawString(score.getPosition().x, score.getPosition().y, score.getRepresentableString(), Color.white);
-		
-		//Version 2:
-		//standard version, but at higher framerate
-		//graphics.drawString(score.getRepresentableString(), score.getPosition().x, score.getPosition().y);
-		
+
 		graphics.setBackground(Color.red);
 	}
 	
