@@ -66,5 +66,11 @@ public class Novice extends Sprite{
         }
         
         move(delta);
+        
+        Vector2f pos = getPosition();
+		pos.x = Math.max(0, pos.x);
+		pos.x = Math.min(container.getWidth(), pos.x);
+		pos.y = Math.max(0, pos.y);
+		pos.y = Math.min(container.getHeight(), pos.y);
     }
 }
