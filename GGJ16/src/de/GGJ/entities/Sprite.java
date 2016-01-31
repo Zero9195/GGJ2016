@@ -21,10 +21,7 @@ public class Sprite extends Entity {
 	 * Currently rendered image.
 	 */
 	private Image currentImage;
-	/**
-	 * SpriteSheet cut into pieces and saved in this array.
-	 */
-	private Image[][] images; //0=Down, 1=Left, 2=Right, 3=Up 
+
 	/**
 	 * Used for collision detection.
 	 */
@@ -53,11 +50,7 @@ public class Sprite extends Entity {
 	}
 	
 	public void setSheet(Image sheet, int rows, int columns) {
-		Image[][] images = new Image[rows][columns];
-		images[0][0] = sheet;
-		
-		
-		currentImage = images[0][0];
+		currentImage = sheet;
 		boundingBox = new Rectangle(0, 0, currentImage.getWidth(), currentImage.getHeight());
 	}
 	
