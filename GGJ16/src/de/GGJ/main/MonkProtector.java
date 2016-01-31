@@ -29,6 +29,7 @@ public class MonkProtector extends BasicGame {
     private Novice novice;
     private Score score;
     private TrueTypeFont ttf;
+    private int damageTimer;
 	
 	MonkProtector(String title) {
 		super(title);
@@ -43,6 +44,7 @@ public class MonkProtector extends BasicGame {
 		opponents = new ArrayList<>();
 		score = new Score();
 		ttf = new TrueTypeFont(score.getFormattedFont(), true);
+		this.damageTimer = 0;
 		
 		RandomPositionGenerator rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
 		
@@ -81,18 +83,22 @@ public class MonkProtector extends BasicGame {
         Weapon w = novice.getWeapon();
         //TODO integrate framerate into losing points to decrease attacking speed
         Opponent op;
+        this.damageTimer += delta;
+        
         for (int i = 0; i < opponents.size(); i++) {
         	op = opponents.get(i);
 			op.update(container, delta);
 			
 			if(w.isActivated() && op.getBounding().intersects(w.getBounding())){
 				opponents.remove(op);
+				this.score.winPoints(op.getStrength());
 				i--;
 				continue;
 			}
 			 
-			if (op.isAttacking()) {
+			if (op.isAttacking() && this.damageTimer >= 1000) {
 				this.score.losePoints(op.getStrength());
+				this.damageTimer %= 1000;
 			}
 		}
         
