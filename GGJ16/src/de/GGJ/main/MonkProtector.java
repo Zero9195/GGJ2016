@@ -25,6 +25,7 @@ public class MonkProtector extends BasicGame {
 	private ArrayList<Opponent> opponents;
     private Novice novice;
     private Score score;
+    private TrueTypeFont ttf = null;
 	
 	MonkProtector(String title) {
 		super(title);
@@ -44,12 +45,11 @@ public class MonkProtector extends BasicGame {
 		
 		//Version 1:
 		//nicer but drops framerate significantly
-		//TrueTypeFont ttf = new TrueTypeFont(score.getFormattedFont(), true);
-		//ttf.drawString(score.getPosition().x, score.getPosition().y, score.getRepresentableString(), Color.white);
+		ttf.drawString(score.getPosition().x, score.getPosition().y, score.getRepresentableString(), Color.white);
 		
 		//Version 2:
 		//standard version, but at higher framerate
-		graphics.drawString(score.getRepresentableString(), score.getPosition().x, score.getPosition().y);
+		//graphics.drawString(score.getRepresentableString(), score.getPosition().x, score.getPosition().y);
 		
 		graphics.setBackground(Color.red);
 	}
@@ -62,6 +62,7 @@ public class MonkProtector extends BasicGame {
         novice = new Novice(container.getWidth() / 2, container.getHeight() / 4);
 		opponents = new ArrayList<>();
 		score = new Score();
+		ttf = new TrueTypeFont(score.getFormattedFont(), true);
 		
 		RandomPositionGenerator rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
 		

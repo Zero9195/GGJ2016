@@ -6,7 +6,7 @@ import org.newdawn.slick.geom.Vector2f;
 public class Opponent extends Sprite {
 	
 	protected int strength;
-	//variabel to determine whether points are currently lost
+	//variable to determine whether points are currently lost
 	private boolean attacking;
     
 	public Opponent(int strength, Vector2f pos, float speed) {
@@ -36,7 +36,6 @@ public class Opponent extends Sprite {
 		} else {
 			this.attacking = true;
 		}
-		
 	}
 	
 	public int getStrength() {
