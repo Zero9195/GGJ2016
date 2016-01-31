@@ -1,6 +1,5 @@
 package de.GGJ.main;
 
-import java.awt.Font;
 import java.util.ArrayList;
 
 import org.newdawn.slick.AppGameContainer;
@@ -9,11 +8,9 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.Input;
 
-import de.GGJ.collisionDetection.Direction;
 import de.GGJ.entities.*;
 import de.GGJ.util.RandomPositionGenerator;
 import de.GGJ.util.Score;
@@ -41,7 +38,7 @@ public class MonkProtector extends BasicGame {
 		}		
 		
 		novice.getImage().draw(novice.getPosition().x, novice.getPosition().y, novice.getScale());
-		
+		novice.renderWeapon();
 		//Version 1:
 		//nicer but drops framerate significantly
 		//TrueTypeFont ttf = new TrueTypeFont(score.getFormattedFont(), true);
