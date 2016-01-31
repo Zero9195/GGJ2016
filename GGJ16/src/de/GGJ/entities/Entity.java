@@ -8,6 +8,11 @@ public abstract class Entity {
 	private Vector2f pos;
 	private float scale;
 	
+public Entity(Vector2f pos, float scale) {
+        this.pos = pos;
+        this.scale = scale;
+    }
+    
 	public abstract Image getImage();
 
 	public Vector2f getPosition() {

@@ -1,5 +1,7 @@
+
 package de.GGJ.entities;
 
+import de.GGJ.collisionDetection.Direction;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
@@ -15,7 +17,7 @@ public class Sprite extends Entity {
 	/**
 	 * Movement speed.
 	 */
-	private float speed;
+	private float speed = 0;
 	/**
 	 * Currently rendered image.
 	 */
@@ -28,10 +30,22 @@ public class Sprite extends Entity {
 	 * Used for collision detection.
 	 */
 	private Shape boundingBox = new Rectangle(0, 0, 1, 1);
-	
+    
+    /**
+     *
+     * @param pos
+     * @param speed
+     * @param scale
+     */
+    public Sprite(Vector2f pos, float speed, float scale) {
+        super(pos, scale);
+        this.speed = speed;
+        dir = Direction.STOP;
+    }
+    
 	@Override
 	public void update(GameContainer container, int delta) {
-		move();
+		move(delta);
 	}
 	
 	@Override
@@ -70,14 +84,10 @@ public class Sprite extends Entity {
 		boundingBox.setLocation(pos);
 	}
 	
-	public void move() {
-		setPosition(getPosition().add(dir.copy().scale(speed)));
+	public void move(int delta) {
+		setPosition(getPosition().add(dir.copy().scale(speed*delta/1000)));
 	}
 	
-	
-	
-	
-	//experimetnal functions to get and set central position
 	public Vector2f getCentralPoint() {
 		float xPos = this.getPosition().x + this.currentImage.getWidth() / 2;
 		float yPos = this.getPosition().y + this.currentImage.getHeight() / 2;

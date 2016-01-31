@@ -1,5 +1,5 @@
 package de.GGJ.collisionDetection;
 
-public class CollisionListener {
-
+public interface CollisionListener {
+	public void onCollision(CollisionEvent event);
 }

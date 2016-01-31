@@ -1,5 +1,6 @@
 package de.GGJ.main;
 
+import java.awt.Font;
 import java.util.ArrayList;
 
 import org.newdawn.slick.AppGameContainer;
@@ -9,6 +10,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.geom.Vector2f;
 
 import de.GGJ.entities.Fly;
@@ -16,7 +18,8 @@ import de.GGJ.entities.Monk;
 import de.GGJ.entities.Novice;
 import de.GGJ.entities.Opponent;
 import de.GGJ.entities.Spider;
-import de.GGJ16.util.RandomPositionGenerator;
+import de.GGJ.util.RandomPositionGenerator;
+import de.GGJ.util.Score;
 
 
 public class MonkProtector extends BasicGame {
@@ -24,33 +27,20 @@ public class MonkProtector extends BasicGame {
 	private Monk monk = null;
 	private ArrayList<Opponent> opponents;
     private Novice novice;
+    private Score score;
 	
 	MonkProtector(String title) {
 		super(title);
         this.novice = null;
 	}
 
-	
-	@Override
-	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
-		
-		monk.getImage().draw(monk.getPosition().x, monk.getPosition().y, monk.getScale());
-        novice.getImage().draw(novice.getPosition().x, novice.getPosition().y, novice.getScale());
-		
-		for (Opponent op : opponents) {
-			op.getImage().draw(op.getPosition().x, op.getPosition().y, op.getScale());
-		}
-		
-		arg1.setBackground(Color.white);
-	}
-
-	
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		
 		monk = new Monk(container.getHeight(), container.getWidth());
         novice = new Novice(container.getWidth() / 2, container.getHeight() / 4);
 		opponents = new ArrayList<>();
+		score = new Score();
 		
 		RandomPositionGenerator rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
 		
@@ -63,14 +53,45 @@ public class MonkProtector extends BasicGame {
 		opponents.add(spider);	
 	}
 
+	@Override
+	public void render(GameContainer container, Graphics graphics) throws SlickException {
+		
+		monk.getImage().draw(monk.getPosition().x, monk.getPosition().y, monk.getScale());
+		
+		for (Opponent op : opponents) {
+			op.getImage().draw(op.getPosition().x, op.getPosition().y, op.getScale());
+		}		
+		
+		novice.getImage().draw(novice.getPosition().x, novice.getPosition().y, novice.getScale());
+		
+		//Version 1:
+		//nicer but drops framerate significantly
+		//TrueTypeFont ttf = new TrueTypeFont(score.getFormattedFont(), true);
+		//ttf.drawString(score.getPosition().x, score.getPosition().y, score.getRepresentableString(), Color.white);
+		
+		//Version 2:
+		//standard version, but at higher framerate
+		graphics.drawString(score.getRepresentableString(), score.getPosition().x, score.getPosition().y);
+		
+		graphics.setBackground(Color.red);
+	}
 	
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
 		Input input = container.getInput();
         
+        novice.update(container, delta);
+        
+        //TODO integrate framerate into losing points to decrease attacking speed
+        for (Opponent op : opponents) {
+			op.update(container, delta);
+			if (op.isAttacking()) {
+				this.score.losePoints(op.getStrength());
+			}
+		}
+        
         //attack
         if (input.isKeyPressed(Input.KEY_SPACE)) {
-            
         }
         //close game
         if (input.isKeyPressed(Input.KEY_ESCAPE) || input.isKeyPressed(Input.KEY_E) || input.isKeyPressed(Input.KEY_Q)) {

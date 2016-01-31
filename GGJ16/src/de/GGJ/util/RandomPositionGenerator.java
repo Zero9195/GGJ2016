@@ -1,4 +1,4 @@
-package de.GGJ16.util;
+package de.GGJ.util;
 
 import org.newdawn.slick.geom.Vector2f;
 

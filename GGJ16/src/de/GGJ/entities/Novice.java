@@ -18,13 +18,13 @@ import de.GGJ.collisionDetection.Direction;
  * @author Marw
  */
 public class Novice extends Sprite{
-    protected static final float scale = 0.3f;
+    protected static final float SCALE = 1.0f;
     protected int strength;
 
 	public Novice(Vector2f pos) throws SlickException {
-		this.setPosition(pos);
+		super(pos, 100, SCALE);
         strength = 100;
-        setSheet(new Image("resources/monk.jpeg"), 1, 1);
+        setSheet(new Image("resources/monky.png"), 1, 1);
 	}
 
     public Novice(float xPos, float yPos) throws SlickException {
@@ -33,7 +33,7 @@ public class Novice extends Sprite{
 	
     @Override
 	public float getScale() {
-		return scale;
+		return SCALE;
 	}
     
     @Override
@@ -42,27 +42,29 @@ public class Novice extends Sprite{
     	
     	//move player
         if (input.isKeyDown(Input.KEY_W)) {
-        	if(input.isKeyDown(Input.KEY_A)){
-        		setDirection(Direction.NORTHWEST);
-        	} else if(input.isKeyDown(Input.KEY_D)){
-        		setDirection(Direction.NORTHEAST);
-        	} else {
+//        	if(input.isKeyDown(Input.KEY_A)){
+//        		setDirection(Direction.NORTHWEST);
+//        	} else if(input.isKeyDown(Input.KEY_D)){
+//        		setDirection(Direction.NORTHEAST);
+//        	} else {
         		setDirection(Direction.NORTH);
-        	}
+//        	}
         } else if(input.isKeyDown(Input.KEY_S)) {
-        	if(input.isKeyDown(Input.KEY_A)){
-        		setDirection(Direction.SOUTHWEST);
-        	} else if(input.isKeyDown(Input.KEY_D)){
-        		setDirection(Direction.SOUTHEAST);
-        	} else {
+//        	if(input.isKeyDown(Input.KEY_A)){
+//        		setDirection(Direction.SOUTHWEST);
+//        	} else if(input.isKeyDown(Input.KEY_D)){
+//        		setDirection(Direction.SOUTHEAST);
+//        	} else {
         		setDirection(Direction.SOUTH);
-        	}
+//        	}
         } else if(input.isKeyDown(Input.KEY_A)) {
             setDirection(Direction.WEST);
         } else if(input.isKeyDown(Input.KEY_D)) {
             setDirection(Direction.EAST);
+        }else{
+            setDirection(Direction.STOP);
         }
         
-        move();
+        move(delta);
     }
 }
