@@ -7,11 +7,16 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
-import org.newdawn.slick.Input;
 
-import de.GGJ.entities.*;
+import de.GGJ.entities.Fly;
+import de.GGJ.entities.Monk;
+import de.GGJ.entities.Novice;
+import de.GGJ.entities.Opponent;
+import de.GGJ.entities.Spider;
+
 import de.GGJ.util.RandomPositionGenerator;
 import de.GGJ.util.Score;
 
@@ -26,6 +31,25 @@ public class MonkProtector extends BasicGame {
 	MonkProtector(String title) {
 		super(title);
         this.novice = null;
+	}
+
+	@Override
+	public void init(GameContainer container) throws SlickException {
+		
+		monk = new Monk(container.getHeight(), container.getWidth());
+        novice = new Novice(container.getWidth() / 2, container.getHeight() / 4);
+		opponents = new ArrayList<>();
+		score = new Score();
+		
+		RandomPositionGenerator rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
+		
+		Opponent fly = new Fly(new Vector2f(0, 0));
+		Opponent spider = new Spider(new Vector2f(0, 0));
+		fly.setPositionViaCentralPoint(rpg.getRandomPosition());
+		spider.setPositionViaCentralPoint(rpg.getRandomPosition());
+		
+		opponents.add(fly);
+		opponents.add(spider);	
 	}
 
 	@Override
@@ -50,27 +74,6 @@ public class MonkProtector extends BasicGame {
 		
 		graphics.setBackground(Color.red);
 	}
-
-	
-	@Override
-	public void init(GameContainer container) throws SlickException {
-		
-		monk = new Monk(container.getHeight(), container.getWidth());
-        novice = new Novice(container.getWidth() / 2, container.getHeight() / 4);
-		opponents = new ArrayList<>();
-		score = new Score();
-		
-		RandomPositionGenerator rpg = new RandomPositionGenerator(container.getWidth(), container.getHeight());
-		
-		Opponent fly = new Fly(new Vector2f(0, 0));
-		Opponent spider = new Spider(new Vector2f(0, 0));
-		fly.setPositionViaCentralPoint(rpg.getRandomPosition());
-		spider.setPositionViaCentralPoint(rpg.getRandomPosition());
-		
-		opponents.add(fly);
-		opponents.add(spider);	
-	}
-
 	
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
