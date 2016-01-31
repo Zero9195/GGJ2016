@@ -11,8 +11,6 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
-import de.GGJ.collisionDetection.Direction;
-
 /**
  *
  * @author Marw
@@ -89,4 +87,8 @@ public class Novice extends Sprite{
             currentWeapon.changeScale();
         }
     }
+
+	public Weapon getWeapon() {
+		return currentWeapon;
+	}
 }

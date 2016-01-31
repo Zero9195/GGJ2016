@@ -1,7 +1,6 @@
 
 package de.GGJ.entities;
 
-import de.GGJ.collisionDetection.Direction;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
@@ -86,6 +85,10 @@ public class Sprite extends Entity {
 	
 	public void move(int delta) {
 		setPosition(getPosition().add(dir.copy().scale(speed*delta/1000)));
+	}
+	
+	public Shape getBounding(){
+		return boundingBox;
 	}
 	
 	public Vector2f getCentralPoint() {

@@ -9,6 +9,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.geom.Vector2f;
 
 import de.GGJ.entities.Fly;
@@ -16,7 +17,7 @@ import de.GGJ.entities.Monk;
 import de.GGJ.entities.Novice;
 import de.GGJ.entities.Opponent;
 import de.GGJ.entities.Spider;
-
+import de.GGJ.entities.Weapon;
 import de.GGJ.util.RandomPositionGenerator;
 import de.GGJ.util.Score;
 
@@ -84,15 +85,19 @@ public class MonkProtector extends BasicGame {
 		Input input = container.getInput();
         
         novice.update(container, delta);
-        //Weapon w = novice.getWeapon();
+        Weapon w = novice.getWeapon();
         //TODO integrate framerate into losing points to decrease attacking speed
-        for (Opponent op : opponents) {
+        Opponent op;
+        for (int i = 0; i < opponents.size(); i++) {
+        	op = opponents.get(i);
 			op.update(container, delta);
-			/*
-			 * if(w.isActivated() && op.getBoundingBox().collides(w.getBoundingBox())){
-			 * oppponents.remove(op);
-			 * }
-			 */
+			
+			if(w.isActivated() && op.getBounding().intersects(w.getBounding())){
+				opponents.remove(op);
+				i--;
+				continue;
+			}
+			 
 			if (op.isAttacking()) {
 				this.score.losePoints(op.getStrength());
 			}
