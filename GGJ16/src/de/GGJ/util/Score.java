@@ -14,7 +14,7 @@ public class Score extends Entity {
 	private int size;
 	
 	public Score() {
-        super(new Vector2f(745,20), 1.0f);
+        super(new Vector2f(720,20), 1.0f);
 		this.score = 0;
 		this.size = 32;
 		this.font = new Font("Verdana", Font.BOLD, this.size);
@@ -39,6 +39,10 @@ public class Score extends Entity {
 	
 	public void losePoints(int i) {
 		this.score -= i;
+	}
+	
+	public int getScore() {
+		return this.score;
 	}
 	
 
